@@ -14,7 +14,7 @@ var (
 func ConnectDB(){
   d, err :=gorm.Open("mysql", "devhimal:devhimal123/simplerest?charset=utf8&parseTime=True&loc=Local")
   if err != nil {
-    panic("failed to connect to database", err)
+    panic("failed to connect to database")
   }
   db =d
 }
