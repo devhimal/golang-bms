@@ -14,6 +14,7 @@ type Book struct {
 	Title  string `gorm:""json:"title"`
 	Author string `json:"author"`
 	Publication string `json:"publication"`
+	Price	float64 `json:"price"`
 }
 
 func init(){
@@ -41,8 +42,9 @@ func GetBookByID(Id int) (*Book, *gorm.DB) {
 }
 
 
-func deleteBook(Id int) Book {
+func DeleteBook(Id int) Book {
 	var book Book
 	 db.Where("ID=?", Id).Delete(book)
 	return book
 }
+

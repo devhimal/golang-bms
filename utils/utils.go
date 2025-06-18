@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-func ParseRequestBody(r *http.Request, v interface{}) error {
+func ParseBody(r *http.Request, v interface{}) error {
 	body, err := io.ReadAll(r.Body) // Read the entire request body
 	if err != nil {
 		return err // Return error if reading failed
