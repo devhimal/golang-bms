@@ -11,7 +11,7 @@ var db *gorm.DB
 type Book struct {
 	gorm.Model
 	ID     int    `json:"id"`
-	Title  string `gorm:""json:"title"`
+	Title  string `json:"title"`
 	Author string `json:"author"`
 	Publication string `json:"publication"`
 	Price	float64 `json:"price"`
