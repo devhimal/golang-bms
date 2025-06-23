@@ -1,14 +1,14 @@
-
 package controllers
 
 import (
-	"fmt"
 	"encoding/json"
+	"fmt"
 	"net/http"
-	"github.com/gorilla/mux"
 	"strconv"
+
 	"github.com/devhimal/golang-bms/internal/models"
 	"github.com/devhimal/golang-bms/utils"
+	"github.com/gorilla/mux"
 )
 
 func GetBooks(w http.ResponseWriter, r *http.Request) {
@@ -19,7 +19,7 @@ func GetBooks(w http.ResponseWriter, r *http.Request) {
 	w.Write(res)
 }
 
-func GetBookByID (w http.ResponseWriter, r *http.Request) {
+func GetBookByID(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	id, err := strconv.Atoi(params["id"])
 	if err != nil {
@@ -37,10 +37,9 @@ func GetBookByID (w http.ResponseWriter, r *http.Request) {
 	w.Write(res)
 }
 
-
-func CreateBook(w http.ResponseWriter, r *http.Request){
+func CreateBook(w http.ResponseWriter, r *http.Request) {
 	CreateBook := &models.Book{}
-	utils.ParseBody(r, CreateBook) 
+	utils.ParseBody(r, CreateBook)
 	b := CreateBook.CreateBook()
 	res, _ := json.Marshal(b)
 	w.Header().Set("Content-Type", "application/json")
@@ -54,12 +53,12 @@ func UpdateBook(w http.ResponseWriter, r *http.Request) {
 	var params = mux.Vars(r)
 	bookId, err := strconv.Atoi(params["id"])
 
-	if(err !=nil){
+	if err != nil {
 		fmt.Println("Error while parsing book ID:", err)
 	}
 
 	bookDetails, db := models.GetBookByID(bookId)
-	if(updateBook.Title != "" && updateBook.Author != "" && updateBook.Publication != "" && updateBook.Price != 0){
+	if updateBook.Title != "" && updateBook.Author != "" && updateBook.Publication != "" && updateBook.Price != 0 {
 		bookDetails.Title = updateBook.Title
 		bookDetails.Author = updateBook.Author
 		bookDetails.Publication = updateBook.Publication

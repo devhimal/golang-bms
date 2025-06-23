@@ -5,7 +5,6 @@ import (
 	"log"
 	"net/http"
 	"github.com/gorilla/mux"
-	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"github.com/devhimal/golang-bms/internal/routes"
 )
